@@ -13,6 +13,7 @@
 
 
     <!--[if IE]><script type="text/javascript" src="js/excanvas.js"></script><![endif]--> <!-- js/default.js -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/2.0.12/plyr.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel='stylesheet' href='css/mapbox-gl.css'/>
     <link rel="stylesheet" href="css/application.css">
@@ -38,6 +39,7 @@
 
 
     <!-- Custom Fonts -->
+    <link href="http://vjs.zencdn.net/5.19.0/video-js.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700,800" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=PT+Sans&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -84,7 +86,10 @@
     <div id="video-filter"></div>
     <img src="img/minimap-mariinka-start.png" id="video-map" alt="video-map">
     <div id="video-note">Відео Влада Казакова</div>
-    <video id="video-events" autoplay loop webkit-playsinline="true" playsinline="true">
+<!--     <video id="video-events" autoplay loop webkit-playsinline="true" playsinline="true">
+        <source src="http://texty.org.ua/video/maidan_maps/maidan-bg-blacked.mp4" type="video/mp4">
+    </video> -->
+     <video  id="video-events" controls loop data-plyr='{ autoplay: "true" }'>
         <source src="http://texty.org.ua/video/maidan_maps/maidan-bg-blacked.mp4" type="video/mp4">
     </video>
     </div> 
@@ -624,7 +629,15 @@
 <script src="js/share-behavior.js"></script>
 <script src="js/clock.js"></script>
 <!-- <script src="js/mobile-video.js"></script> -->
+<script src="https://cdn.plyr.io/2.0.12/plyr.js"></script>
+
+
 <script type="text/javascript">
+
+plyr.setup();
+
+
+
 
 
 
@@ -645,6 +658,23 @@ $(window).scroll(function() {
 
 
 var video = document.getElementById('video-events');
+var players = plyr.get('.js-player');
+
+var playBtn = document.getElementById('play-btn');
+
+if (playBtn) {
+    playBtn.addEventListener('click', function () {
+        if (video.paused) {
+            $(this).html('<i class="fa fa-pause play fa-2x" aria-hidden="true">');
+            video.play();
+            $("#hint").hide();
+        } else {
+            video.pause();
+            $(this).html('<i class="fa fa-play play fa-2x" aria-hidden="true">');
+            $("#hint").hide();
+        }
+    });
+}
 
 $(".mute-btn").click( function (){
 
