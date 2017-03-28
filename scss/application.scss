@@ -446,6 +446,11 @@ div.tooltip {
     width: 5px;
 } 
 
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+
 // hide plyr controls
  .plyr--stopped .plyr__controls {
 
