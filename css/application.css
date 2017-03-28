@@ -576,4 +576,7 @@ div.tooltip {
   pointer-events: none;
   width: 5px; }
 
+.plyr--stopped .plyr__controls {
+  opacity: 0; }
+
 /*# sourceMappingURL=application.css.map */

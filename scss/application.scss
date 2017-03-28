@@ -445,3 +445,10 @@ div.tooltip {
     pointer-events: none;
     width: 5px;
 } 
+
+// hide plyr controls
+ .plyr--stopped .plyr__controls {
+
+        opacity: 0;
+
+    }
